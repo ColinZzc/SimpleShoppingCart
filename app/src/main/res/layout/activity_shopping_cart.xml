@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShoppingCart"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:background="?attr/colorPrimary"
+        >
+        <TextView
+            android:id="@+id/cartTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="购物车"
+            android:paddingEnd="50dp"
+            />
+    </android.support.v7.widget.Toolbar>
+
+    <ListView
+        android:id="@+id/cartListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolBar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/allnum"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="10"
+            android:textSize="20dp"
+            android:gravity="center_vertical"
+            android:layout_margin="5dp" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="件商品 共"
+            android:textSize="20dp"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@id/allnum"/>
+
+        <TextView
+            android:id="@+id/allprice"
+            android:layout_toRightOf="@id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="20dp"
+            android:layout_margin="5dp"
+            android:textColor="#ff7e43"
+            android:text="100¥" />
+        <Button
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="付款"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:background="#ff7e43"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+
+            />
+    </RelativeLayout>
+
+</LinearLayout>

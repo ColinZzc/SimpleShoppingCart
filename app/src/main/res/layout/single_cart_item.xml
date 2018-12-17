@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="lalalalaaaaaaaaaaaaaaaaaaaaaaaaa"
+            android:textSize="20sp"
+            android:maxLines="2"
+            android:ellipsize="end"/>
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$12345"
+            android:textSize="20dp"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/title"/>
+        <Button
+            android:id="@+id/but_mi"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_toLeftOf="@+id/num"
+            android:textSize="30dp"
+            android:focusable="false"
+            android:padding="0dp"
+            android:text="-"/>
+        <TextView
+            android:id="@+id/num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="lalalal"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignTop="@+id/but_pl"
+            android:layout_toLeftOf="@+id/but_pl"/>
+        <Button
+            android:id="@+id/but_pl"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:textSize="30dp"
+            android:focusable="false"
+            android:padding="0dp"
+            android:layout_alignParentEnd="true"
+            android:text="+"/>
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>
