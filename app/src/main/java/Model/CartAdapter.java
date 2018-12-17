@@ -21,12 +21,12 @@ import com.example.colin.internship.R;
 import java.util.List;
 
 public class CartAdapter extends ArrayAdapter {
-    LruCache<String, Bitmap> lruCache = Cache.getLruCache();
+    private LruCache<String, Bitmap> lruCache = Cache.getLruCache();
     private int resourceID;
 
-    Callback mCallBack;
+    private Callback mCallBack;
     public interface Callback {
-        public void click(View v);
+        void click(View v);
     }
     public CartAdapter(@NonNull Context context, int resource, @NonNull List objects, Callback callback) {
         super(context, resource, objects);
@@ -55,7 +55,6 @@ public class CartAdapter extends ArrayAdapter {
         }
 
         final Products product = (Products) getItem(position);
-//        Log.e("product-------",product.toString());
         viewHolder.title.setText(product.getTitle());
         viewHolder.price.setText(product.getPrice());
         viewHolder.num.setText(product.getNum()+"");
@@ -90,8 +89,6 @@ public class CartAdapter extends ArrayAdapter {
         viewHolder.bMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO -1
-                Log.i("---------",product.getNum()+"");
                 if (product.getNum()>1){
                     DBDao.min(getContext(),new String[]{product.getId()+""});
                     mCallBack.click(v);
@@ -100,8 +97,6 @@ public class CartAdapter extends ArrayAdapter {
                 }
             }
         });
-
-
 
         return view;
     }

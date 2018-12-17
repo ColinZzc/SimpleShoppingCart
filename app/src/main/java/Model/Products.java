@@ -7,14 +7,6 @@ public class Products {
     private String title;
     private String price;
 
-    public Products() {
-
-    }
-    public Products(String title, String price) {
-        this.title = title;
-        this.price = price;
-    }
-
     public String getTitle() {
         return title;
     }

@@ -83,7 +83,6 @@
             android:background="#ff7e43"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-
             />
     </RelativeLayout>
 

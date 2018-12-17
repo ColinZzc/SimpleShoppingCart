@@ -1,18 +1,14 @@
 package com.example.colin.internship;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.util.LruCache;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,9 +17,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import Model.HttpHelp;
 import Model.MyAdapter;
 import Model.MyHttp;
 import Model.Products;
@@ -50,14 +46,13 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.Callbac
                         List<Products> list = new ArrayList<>();
                         Log.i("主线程接收handler",jsonArray.toString());
                         for (int i = 0; i< jsonArray.length();i++) {
-//                                Log.i("jsonarray长度",jsonArray.length()+"");
                             try {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                                 Products products = new Products();
-                                products.setId(jsonObject.getInt("id"));
-                                products.setPrice(jsonObject.getString("price"));
-                                products.setTitle(jsonObject.getString("title"));
-                                products.setImage(jsonObject.getString("image"));
+                                products.setId(jsonObject.getInt(HttpHelp.id));
+                                products.setPrice(jsonObject.getString(HttpHelp.price));
+                                products.setTitle(jsonObject.getString(HttpHelp.title));
+                                products.setImage(jsonObject.getString(HttpHelp.image));
                                 list.add(products);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -69,8 +64,6 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.Callbac
                         MyAdapter myAdapter = new MyAdapter(MainActivity.this,R.layout.single_item,list,MainActivity.this);
                         listView.setAdapter(myAdapter);
                         break;
-                    default:
-                        Toast.makeText(MainActivity.this, "网络连接失败" , Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }
@@ -88,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.Callbac
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.item_post:
-                Toast.makeText(MainActivity.this,"点击购物车",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,R.string.toast_cart_clicked,Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this,ShoppingCart.class);
                 startActivity(intent);
                 break;
@@ -98,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.Callbac
 
     @Override
     public void click(View v) {
-
-        Toast.makeText(MainActivity.this,"添加成功",Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this,R.string.toast_add_item_success,Toast.LENGTH_SHORT).show();
     }
 }

@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -28,7 +26,6 @@ public class ShoppingCart extends AppCompatActivity implements Callback {
     List<Products> products;
     TextView allNum;
     TextView allPrice;
-//    List
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,25 +47,19 @@ public class ShoppingCart extends AppCompatActivity implements Callback {
         cart.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(ShoppingCart.this,"pos-"+position,Toast.LENGTH_SHORT).show();
                 showDelDialog(position);
 
             }
         });
-
-        //TODO tital
         count();
     }
 
     private void count() {
         int countNum = 0;
-        int countPrice = 0;
+        double countPrice = 0;
         for (Products p : products) {
             countNum += p.getNum();
-            double n = 0;
-            n = Double.valueOf(p.getPrice().substring(1,p.getPrice().length()));
-//            Log.i("price",n+"");
-
+            double n = Double.valueOf(p.getPrice().substring(1,p.getPrice().length()));
             countPrice += p.getNum()*n;
         }
         allNum.setText(countNum+"");
@@ -82,7 +73,6 @@ public class ShoppingCart extends AppCompatActivity implements Callback {
         delDia.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-//                Toast.makeText(ShoppingCart.this,"ok"+which,Toast.LENGTH_SHORT).show();
                 DBDao.del(ShoppingCart.this,new String[]{products.get(position).getId()+""});
                 products.remove(position);
                 cartAdapter.notifyDataSetChanged();
@@ -92,7 +82,6 @@ public class ShoppingCart extends AppCompatActivity implements Callback {
         delDia.setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-//                Toast.makeText(ShoppingCart.this,"no"+which,Toast.LENGTH_SHORT).show();
             }
         });
         delDia.show();

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Internship</string>
+    <string name="toast_cart_clicked">点击购物车</string>
+    <string name="toast_add_item_success">添加成功</string>
 </resources>

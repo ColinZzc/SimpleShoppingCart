@@ -1,10 +1,7 @@
 package Model;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.util.LruCache;
@@ -16,17 +13,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.colin.internship.MainActivity;
 import com.example.colin.internship.R;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.List;
-
-import javax.security.auth.callback.Callback;
 
 public class MyAdapter extends ArrayAdapter  {
     LruCache<String, Bitmap> lruCache = Cache.getLruCache();
@@ -62,8 +52,6 @@ public class MyAdapter extends ArrayAdapter  {
 
         final Products products = (Products) getItem(position);
 
-//        viewHolder.button.setTag(products.getId());
-
         Log.i("imageURL",products.getImage());
         viewHolder.title.setText(products.getTitle());
         viewHolder.price.setText(products.getPrice());
@@ -86,7 +74,6 @@ public class MyAdapter extends ArrayAdapter  {
             viewHolder.image.setImageBitmap(bitmap);
         }
 
-//        viewHolder.button.setOnClickListener(this);
         viewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
