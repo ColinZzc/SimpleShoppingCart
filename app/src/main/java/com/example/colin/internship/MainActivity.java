@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.Callbac
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.item_post:
-                Toast.makeText(MainActivity.this,R.string.toast_cart_clicked,Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this,ShoppingCart.class);
                 startActivity(intent);
                 break;

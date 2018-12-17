@@ -20,7 +20,6 @@ public class MyHttp {
     URL url = null;
     public void Post(final JSONObject para, final Handler handler, final String urlString){
 
-        //创建url对象
         try {
             if (urlString != null) {
                 url = new URL(urlString);
@@ -32,7 +31,6 @@ public class MyHttp {
             Log.i("创建url对象异常", e.toString());
         }
 
-        //新建子线程 在子线程中访问服务器
         new Thread(){
             @Override
             public void run() {
@@ -42,7 +40,6 @@ public class MyHttp {
                     httpURLConnection.setConnectTimeout(HttpHelp.connectTimeout);
                     httpURLConnection.setReadTimeout(HttpHelp.readTimeout);
                     httpURLConnection.setDoInput(true);//下载
-                    httpURLConnection.setDoOutput(true);//上传
                     if (para != null){
                         httpURLConnection.getOutputStream().write(para.toString().getBytes());
                     }
@@ -63,7 +60,7 @@ public class MyHttp {
                         responseJSON.what = 1;
                         responseJSON.obj = jsonArray;
                         handler.sendMessage(responseJSON);
-                        }else{
+                    }else{
                         Log.i("http请求失败ResponseCode",httpURLConnection.getResponseCode()+"");
                     }
                 } catch (IOException | JSONException e) {
